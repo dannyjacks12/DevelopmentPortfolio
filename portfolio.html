@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>Danny The Dev</h1>
+        <h1 class="main-title">Danny The Dev</h1>
         <nav>
             <ul>
                 <li><a href="#about">About Me</a></li>
@@ -49,57 +49,81 @@
     <footer>
         <!-- Add your footer content here -->
     </footer>
-    <!-- ... (rest of the HTML) ... -->
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const mainTitle = document.querySelector('.main-title');
-        const nav = document.querySelector('nav');
-        const navLinks = document.querySelectorAll('nav li a');
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainTitle = document.querySelector('.main-title');
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelectorAll('nav li a');
 
-        // Function to show/hide the main title
-        function toggleMainTitle() {
-            if (window.scrollY === 0) {
-                mainTitle.style.display = 'block';
-            } else {
-                mainTitle.style.display = 'none';
+            // Function to handle sticky navigation behavior
+            function toggleStickyNav() {
+                const mainSection = document.querySelector('main');
+                const mainSectionTop = mainSection.offsetTop - 99;
+
+                if (window.scrollY >= mainSectionTop) {
+                    nav.classList.add('fixed-nav');
+                } else {
+                    nav.classList.remove('fixed-nav');
+                }
             }
-        }
 
-        // Add click event listeners to navigation links
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(event) {
+            function fadeOutMainTitle() {
+                const scrollPos = window.scrollY;
+                const opacity = 1 - (scrollPos / 300); // Adjust the 300 value to control the fade-out speed
+
+                mainTitle.style.opacity = opacity;
+            }
+
+            // Function to calculate dynamic offset for smooth scrolling
+            function calculateOffset(targetElement) {
+                const navHeight = nav.offsetHeight;
+                const targetRect = targetElement.getBoundingClientRect();
+                const scrollY = window.scrollY || window.pageYOffset;
+                return targetRect.top + scrollY - navHeight - 10; // Adjust -10 if needed for precise positioning
+            }
+
+            // Function to perform smooth scroll to the target element
+            function smoothScrollToTarget(event) {
                 event.preventDefault();
-                const targetId = link.getAttribute('href');
+                const targetId = event.currentTarget.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                const targetOffsetTop = targetElement.offsetTop;
+                const offset = calculateOffset(targetElement);
 
-                // Scroll to the target section smoothly
-                window.scroll({
-                    top: targetOffsetTop,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add scroll event listener to show the main title when scrolling to the top
-        window.addEventListener('scroll', function() {
-            toggleMainTitle();
-
-            // Update navigation menu position on scroll
-            const headerHeight = document.querySelector('header').clientHeight;
-            if (window.scrollY >= headerHeight) {
-                nav.classList.add('fixed-nav');
-            } else {
-                nav.classList.remove('fixed-nav');
+                // Use scrollIntoView with updated options
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest', offsetTop: offset });
             }
+
+            // Add click event listeners to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', smoothScrollToTarget);
+            });
+
+            // Add scroll event listener to handle sticky navigation
+            window.addEventListener('scroll', function() {
+                toggleStickyNav();
+                fadeOutMainTitle();
+            });
+
+            // Trigger the function once on page load to ensure the initial state is correct
+            toggleStickyNav();
+            fadeOutMainTitle();
         });
-    });
     </script>
-
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
