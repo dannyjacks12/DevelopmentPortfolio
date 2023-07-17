@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Danny The Dev</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <!-- You can add additional CSS or JavaScript files here -->
+</head>
+<body>
+    <header>
+        <h1>Danny The Dev</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li>┃</li>
+                <li><a href="#projects">Projects</a></li>
+                <li>┃</li>
+                <li><a href="#skills">Skills</a></li>
+                <li>┃</li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div id="about">
+            <h2>About Me</h2>
+            <p>Welcome to my development portfolio. My name is Danny and I enjoy creating and developing various types of programs, websites, and apps.</p>
+        </div>
+
+        <div id="projects">
+            <h2>Projects</h2>
+            <p>This section will contain information about my projects.</p>
+        </div>
+
+        <div id="skills">
+            <h2>Skills</h2>
+            <p>This section will display my skills.</p>
+        </div>
+
+        <div id="contact">
+            <h2>Contact</h2>
+            <p>You can contact me at email@example.com</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <!-- Add your footer content here -->
+    </footer>
+    <!-- ... (rest of the HTML) ... -->
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainTitle = document.querySelector('.main-title');
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelectorAll('nav li a');
+
+        // Function to show/hide the main title
+        function toggleMainTitle() {
+            if (window.scrollY === 0) {
+                mainTitle.style.display = 'block';
+            } else {
+                mainTitle.style.display = 'none';
+            }
+        }
+
+        // Add click event listeners to navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                const targetOffsetTop = targetElement.offsetTop;
+
+                // Scroll to the target section smoothly
+                window.scroll({
+                    top: targetOffsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll event listener to show the main title when scrolling to the top
+        window.addEventListener('scroll', function() {
+            toggleMainTitle();
+
+            // Update navigation menu position on scroll
+            const headerHeight = document.querySelector('header').clientHeight;
+            if (window.scrollY >= headerHeight) {
+                nav.classList.add('fixed-nav');
+            } else {
+                nav.classList.remove('fixed-nav');
+            }
+        });
+    });
+    </script>
+
+
+</body>
+</html>
+
+
+
+
+
+
