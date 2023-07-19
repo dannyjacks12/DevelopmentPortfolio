@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    
 
     
 }
@@ -28,15 +29,20 @@ nav {
 }
 
 nav.fixed-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    transition: top 0.3s ease-out; /* Add a transition to the 'top' property */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: top 0.3s ease-out;
+  background-color: #f5f5f5; /* Add this line to ensure the background color is applied to the fixed nav */
 }
 
 h1.main-title {
     transition: opacity 0.3s ease-out; /* Adjust the transition speed if needed */
+}
+
+main {
+  padding-top: 60px; /* Adjust the value as needed */
 }
 
 nav ul {
@@ -68,9 +74,11 @@ main {
 
 /* Apply margins only to h2 elements inside main */
 main div:not(:first-of-type) h2 {
-    margin-top: 700px;
+    margin-top: 300px; /* Remove this line */
     margin-bottom: 20px;
+    padding-top: 120px; /* Add a padding value that suits your design */
 }
+
 
 footer {
     background-color: #f5f5f5;
@@ -114,13 +122,14 @@ html {
     display: flex;
     align-items: center;
     justify-content: center; /* Add this to horizontally center the items */
-    gap: 20px; /* Add spacing between the contact links */
+    gap: 70px; /* Add spacing between the contact links */
 }
 
 /* Apply this CSS to control the width and spacing of each image in the contact items */
 .contact-item img {
-    width: 32px; /* Adjust the width as needed */
-    height: 32px; /* Adjust the height as needed */
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    
 }
 
 /* Apply this CSS to center the subtitles */
@@ -203,18 +212,92 @@ h2 {
 
 .about-title{
     text-align: center;
-    font-size: 50px;  
+    font-size: 40px;  
     margin-top: 100px;
+    
     
 }
 
 .desc{
         text-align: center;
         font-size: 20px;
-
-
-    
 }
+#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.home-container {
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px; /* Adjust the gap between elements as needed */
+    position: relative;
+}
+
+.home-image {
+    width: 400px; /* Adjust the width of the images as needed */
+    height: 500px;
+    -webkit-clip-path: inset(3% 10% 2% 10% round 5% 20% 0 10%);
+    clip-path: inset(3% 10% 2% 10% round 5% 20% 0 10%);
+
+}
+
+.left-content,
+.right-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-content {
+    margin-left: 50px; /* Adjust the left margin to set the distance from the left side */
+}
+
+.right-content {
+    margin-right: 50px; /* Adjust the right margin to set the distance from the right side */
+}
+
+.animate-fadeIn {
+    opacity: 0;
+}
+
+/* Add transition property to create a smooth fadeIn effect */
+.animate-fadeIn {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+    visibility: hidden; /* Optional: This hides the element completely, but keeps its layout space */
+    height: 0; /* Optional: This removes the height of the element to collapse the layout space */
+    padding: 0; /* Optional: This removes any padding that may occupy space even with height: 0 */
+    margin: 0; /* Optional: This removes any margin that may occupy space even with height: 0 */
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, height 0.5s ease-in-out, padding 0.5s ease-in-out, margin 0.5s ease-in-out; /* Optional: Add transitions for a smooth effect */
+}
+
+/* Apply the 'fadeIn' animation when the element becomes visible in the viewport */
+.animate-fadeIn.visible {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

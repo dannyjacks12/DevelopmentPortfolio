@@ -24,24 +24,38 @@
     </header>
 
     <main>
-        <div id="home">
-            <h1 class="about-title">Danny Stephens,</h1>
-            <h1 class="about-title">Full-Stack Developer,</h1>
-            <h1 class="about-title">*Animation*</h1>
-
+        <div id="home" class="home-container">
+            <div class="left-content">
+                <img class="home-image" src="images/home1.JPEG" alt="Link 4 Icon">
+            </div>
+            <div class="center-content">
+                <h1 class="about-title">Danny Stephens</h1>
+                <h1 class="about-title">Full-Stack Developer</h1>
+                <h1 class="about-title">Programming Portfolio</h1>
+            </div>
+            <div class="right-content">
+                <img class="home-image" src="images/home2.JPEG" alt="Link 4 Icon">
+            </div>
         </div>
+
+
+
+
+
+
+
         
-        <div id="about">
+        <div id="about" class="animate-fadeIn">
             <h2 class="subtitle">About Me</h2>
             <p class="about-text">Welcome to my development portfolio. My name is Danny Stephens and I am a full-stack developer who enjoys creating and developing various types of programs, websites, and apps. Although I enjoy being at my computer programming I also like to play rugby, fishing, and going to the gym. </p>
         </div>
 
-        <div id="projects">
+        <div id="projects" class="animate-fadeIn">
             <h2 class="subtitle">Projects</h2>
             <p>This section will contain information about my projects.</p>
         </div>
 
-       <div id="skills">
+       <div id="skills" class="animate-fadeIn">
             <h2 class="subtitle">Skills</h2>
             <p class="desc">Within this section, you will be able to see a self-judged scoring system on my programming fluency with different languages and my strengths in the different stages of development.</p>
            
@@ -137,7 +151,7 @@
 
 
 
-        <div id="contact">
+        <div id="contact" class="animate-fadeIn">
             <h2 class="subtitle">Contact</h2>
             <div class="contact-container">
                 <div class="contact-item">
@@ -180,9 +194,16 @@
         <!-- Add your footer content here -->
     </footer>
 
-    <script>
+    <!-- ... (previous HTML code) ... -->
+
+    <!-- ... (previous HTML code) ... -->
+
+    <!-- ... (previous HTML code) ... -->
+
+    <!-- ... (previous HTML code) ... -->
+
+   <script>
       document.addEventListener('DOMContentLoaded', function () {
-        const mainTitle = document.querySelector('.main-title');
         const nav = document.querySelector('nav');
         const navLinks = document.querySelectorAll('nav li a');
         const sections = document.querySelectorAll('main > div');
@@ -190,7 +211,7 @@
         // Function to handle sticky navigation behavior
         function toggleStickyNav() {
           const mainSection = document.querySelector('main');
-          const mainSectionTop = mainSection.offsetTop - 99;
+          const mainSectionTop = mainSection.offsetTop - nav.offsetHeight; // Subtract the height of the fixed navigation bar
 
           if (window.scrollY >= mainSectionTop) {
             nav.classList.add('fixed-nav');
@@ -199,40 +220,18 @@
           }
         }
 
-        function fadeOutMainTitle() {
-          const scrollPos = window.scrollY;
-          const opacity = 1 - (scrollPos / 50); // Adjust the divisor for faster fade-out (smaller value)
-
-          mainTitle.style.opacity = opacity;
-
-          // Apply fade-out effect to sections
-          sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionBottom = sectionTop + section.offsetHeight;
-
-            if (scrollPos >= sectionTop && scrollPos <= sectionBottom) {
-              const sectionOpacity = 1 - ((scrollPos - sectionTop) / (section.offsetHeight + 20)); // Adjust the divisor for faster fade-out (smaller value)
-              section.style.opacity = sectionOpacity;
-            } else if (scrollPos > sectionBottom) {
-              section.style.opacity = 0;
-            } else {
-              section.style.opacity = 1;
-            }
-          });
-        }
-
         // Function to calculate dynamic offset for smooth scrolling
         function calculateOffset(targetElement) {
           const navHeight = nav.offsetHeight;
           const targetRect = targetElement.getBoundingClientRect();
           const scrollY = window.scrollY || window.pageYOffset;
 
-          // Return 0 when the target element is "#about"
+          // Return 0 when the target element is "#home"
           if (targetElement.id === 'home') {
             return 0;
           }
 
-          return targetRect.top + scrollY - navHeight;
+          return targetRect.top + scrollY - navHeight + 50; // Subtract an additional offset to adjust for smooth scrolling
         }
 
         // Function to perform smooth scroll to the target element
@@ -242,11 +241,15 @@
 
           if (targetId === '#home') {
             // For the 'Home' button, scroll to the top of the page
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scroll({ top: 0, behavior: 'smooth' });
+          } else if (targetId === '#contact') {
+            // For the 'Contact' link, scroll to the bottom of the page
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
           } else {
             // For other navigation links, scroll to the corresponding section
             const targetElement = document.querySelector(targetId);
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const offset = calculateOffset(targetElement);
+            window.scroll({ top: offset, behavior: 'smooth' });
           }
         }
 
@@ -261,11 +264,47 @@
           fadeOutMainTitle();
         });
 
+        // Function to handle fadeIn effect for elements
+        function fadeInElement(element) {
+          element.style.opacity = 0;
+          let op = 0.1; // initial opacity
+          const timer = setInterval(function () {
+            if (op >= 1) {
+              clearInterval(timer);
+            }
+            element.style.opacity = op;
+            op += op * 0.1; // increase the opacity gradually for smooth fadeIn effect
+          }, 50); // adjust the timing as needed (smaller values give faster fadeIn)
+        }
+
+        // Function to handle intersection observer events for fadeIn effect
+        function handleIntersect(entries, observer) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              fadeInElement(entry.target);
+              observer.unobserve(entry.target); // unobserve the target to prevent re-fading when scrolling back
+            }
+          });
+        }
+
+        // Set up the intersection observer for fadeIn effect
+        const fadeInObserver = new IntersectionObserver(handleIntersect, {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.3, // Adjust the threshold as needed (0.0 to 1.0)
+        });
+
+        // Observe each element to trigger the fadeIn effect
+        sections.forEach(section => {
+          fadeInObserver.observe(section);
+        });
+
         // Trigger the function once on page load to ensure the initial state is correct
         toggleStickyNav();
         fadeOutMainTitle();
       });
     </script>
+
 
 
 
