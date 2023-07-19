@@ -8,9 +8,10 @@
 </head>
 <body>
     <header>
-        <h1 class="main-title">Danny The Dev</h1>
         <nav>
             <ul>
+                <li><a href="#home">Home</a></li>
+                <li>┃</li>
                 <li><a href="#about">About Me</a></li>
                 <li>┃</li>
                 <li><a href="#projects">Projects</a></li>
@@ -23,26 +24,155 @@
     </header>
 
     <main>
+        <div id="home">
+            <h1 class="about-title">Danny Stephens,</h1>
+            <h1 class="about-title">Full-Stack Developer,</h1>
+            <h1 class="about-title">*Animation*</h1>
 
+        </div>
+        
         <div id="about">
-            <h2>About Me</h2>
-            <p>Welcome to my development portfolio. My name is Danny and I enjoy creating and developing various types of programs, websites, and apps.</p>
+            <h2 class="subtitle">About Me</h2>
+            <p class="about-text">Welcome to my development portfolio. My name is Danny Stephens and I am a full-stack developer who enjoys creating and developing various types of programs, websites, and apps. Although I enjoy being at my computer programming I also like to play rugby, fishing, and going to the gym. </p>
         </div>
 
         <div id="projects">
-            <h2>Projects</h2>
+            <h2 class="subtitle">Projects</h2>
             <p>This section will contain information about my projects.</p>
         </div>
 
-        <div id="skills">
-            <h2>Skills</h2>
-            <p>This section will display my skills.</p>
+       <div id="skills">
+            <h2 class="subtitle">Skills</h2>
+            <p class="desc">Within this section, you will be able to see a self-judged scoring system on my programming fluency with different languages and my strengths in the different stages of development.</p>
+           
+            <table class="skills-grid">
+                <tr>
+                    <td class="skill">Language</td>
+                    <td class="skill">Competence</td>
+                </tr>
+                <tr>
+                    <td class="skill">HTML</td>
+                    <td class="rating">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="skill">C#</td>
+                    <td class="rating">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="skill">Java</td>
+                    <td class="rating">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="skill">C++</td>
+                    <td class="rating">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </td>
+                </tr>
+                <!-- Add more skills here -->
+            </table>
+            
+           <table class="skills-grid">
+                <tr>
+                    <td class="skill">Area</td>
+                    <td class="skill">Competence</td>
+                </tr>
+                <tr>
+                    <td class="skill">Front-end</td>
+                    <td class="rating">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="skill">Back-end</td>
+                    <td class="rating">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="skill">Full-Stack</td>
+                    <td class="rating">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="skill">Databases</td>
+                    <td class="rating">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+
+                    </td>
+                </tr>
+                <!-- Add more skills here -->
+            </table>
         </div>
 
+
+
+
+
+
+
         <div id="contact">
-            <h2>Contact</h2>
-            <p>You can contact me at email@example.com</p>
+            <h2 class="subtitle">Contact</h2>
+            <div class="contact-container">
+                <div class="contact-item">
+                    <img src="images/email.png" alt="Email Icon">
+                    <p>Danny.Stephens1@outlook.com</p>
+                </div>
+                <div class="contact-item">
+                    <img src="images/phone.png" alt="Phone Icon">
+                    <p>+44 07904 151233</p>
+                </div>
+            </div>
+            <div class="contact-links-container">
+                <div class="contact-item">
+                    <a href="https://github.com/dannyjacks12" target="_blank">
+                        <img src="images/github.png" alt="Link 1 Icon">
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://www.facebook.com/profile.php?id=100006280729327" target="_blank">
+                        <img src="images/facebook.png" alt="Link 2 Icon">
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://www.example3.com" target="_blank">
+                        <img src="images/linkedin.png" alt="Link 3 Icon">
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://www.instagram.com/dannyjacks12/" target="_blank">
+                        <img src="images/instagram.png" alt="Link 4 Icon">
+                    </a>
+                </div>
+            </div>
         </div>
+
 
     </main>
 
@@ -51,65 +181,97 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mainTitle = document.querySelector('.main-title');
-            const nav = document.querySelector('nav');
-            const navLinks = document.querySelectorAll('nav li a');
+      document.addEventListener('DOMContentLoaded', function () {
+        const mainTitle = document.querySelector('.main-title');
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelectorAll('nav li a');
+        const sections = document.querySelectorAll('main > div');
 
-            // Function to handle sticky navigation behavior
-            function toggleStickyNav() {
-                const mainSection = document.querySelector('main');
-                const mainSectionTop = mainSection.offsetTop - 99;
+        // Function to handle sticky navigation behavior
+        function toggleStickyNav() {
+          const mainSection = document.querySelector('main');
+          const mainSectionTop = mainSection.offsetTop - 99;
 
-                if (window.scrollY >= mainSectionTop) {
-                    nav.classList.add('fixed-nav');
-                } else {
-                    nav.classList.remove('fixed-nav');
-                }
+          if (window.scrollY >= mainSectionTop) {
+            nav.classList.add('fixed-nav');
+          } else {
+            nav.classList.remove('fixed-nav');
+          }
+        }
+
+        function fadeOutMainTitle() {
+          const scrollPos = window.scrollY;
+          const opacity = 1 - (scrollPos / 50); // Adjust the divisor for faster fade-out (smaller value)
+
+          mainTitle.style.opacity = opacity;
+
+          // Apply fade-out effect to sections
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            if (scrollPos >= sectionTop && scrollPos <= sectionBottom) {
+              const sectionOpacity = 1 - ((scrollPos - sectionTop) / (section.offsetHeight + 20)); // Adjust the divisor for faster fade-out (smaller value)
+              section.style.opacity = sectionOpacity;
+            } else if (scrollPos > sectionBottom) {
+              section.style.opacity = 0;
+            } else {
+              section.style.opacity = 1;
             }
+          });
+        }
 
-            function fadeOutMainTitle() {
-                const scrollPos = window.scrollY;
-                const opacity = 1 - (scrollPos / 300); // Adjust the 300 value to control the fade-out speed
+        // Function to calculate dynamic offset for smooth scrolling
+        function calculateOffset(targetElement) {
+          const navHeight = nav.offsetHeight;
+          const targetRect = targetElement.getBoundingClientRect();
+          const scrollY = window.scrollY || window.pageYOffset;
 
-                mainTitle.style.opacity = opacity;
-            }
+          // Return 0 when the target element is "#about"
+          if (targetElement.id === 'home') {
+            return 0;
+          }
 
-            // Function to calculate dynamic offset for smooth scrolling
-            function calculateOffset(targetElement) {
-                const navHeight = nav.offsetHeight;
-                const targetRect = targetElement.getBoundingClientRect();
-                const scrollY = window.scrollY || window.pageYOffset;
-                return targetRect.top + scrollY - navHeight - 10; // Adjust -10 if needed for precise positioning
-            }
+          return targetRect.top + scrollY - navHeight;
+        }
 
-            // Function to perform smooth scroll to the target element
-            function smoothScrollToTarget(event) {
-                event.preventDefault();
-                const targetId = event.currentTarget.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                const offset = calculateOffset(targetElement);
+        // Function to perform smooth scroll to the target element
+        function smoothScrollToTarget(event) {
+          event.preventDefault();
+          const targetId = event.currentTarget.getAttribute('href');
 
-                // Use scrollIntoView with updated options
-                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest', offsetTop: offset });
-            }
+          if (targetId === '#home') {
+            // For the 'Home' button, scroll to the top of the page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            // For other navigation links, scroll to the corresponding section
+            const targetElement = document.querySelector(targetId);
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
 
-            // Add click event listeners to navigation links
-            navLinks.forEach(link => {
-                link.addEventListener('click', smoothScrollToTarget);
-            });
-
-            // Add scroll event listener to handle sticky navigation
-            window.addEventListener('scroll', function() {
-                toggleStickyNav();
-                fadeOutMainTitle();
-            });
-
-            // Trigger the function once on page load to ensure the initial state is correct
-            toggleStickyNav();
-            fadeOutMainTitle();
+        // Add click event listeners to navigation links
+        navLinks.forEach(link => {
+          link.addEventListener('click', smoothScrollToTarget);
         });
+
+        // Add scroll event listener to handle sticky navigation and fade-out effect
+        window.addEventListener('scroll', function () {
+          toggleStickyNav();
+          fadeOutMainTitle();
+        });
+
+        // Trigger the function once on page load to ensure the initial state is correct
+        toggleStickyNav();
+        fadeOutMainTitle();
+      });
     </script>
+
+
+
+
+
+
 </body>
 </html>
 

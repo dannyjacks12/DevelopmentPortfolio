@@ -3,6 +3,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+
+    
 }
 
 h1 {
@@ -80,6 +82,150 @@ footer {
 html {
     scroll-behavior: smooth;
 }
+
+/* ... (previous styles) ... */
+
+/* New styles for the contact section */
+#contact {
+    padding: 20px;
+}
+
+#contact h2 {
+    /* ... Your h2 styles ... */
+}
+
+
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Add spacing between the contact items */
+}
+
+/* Apply this CSS to style each contact item */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Add spacing between the image and text */
+}
+
+/* Apply this CSS to create a flex container for the contact links */
+.contact-links-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Add this to horizontally center the items */
+    gap: 20px; /* Add spacing between the contact links */
+}
+
+/* Apply this CSS to control the width and spacing of each image in the contact items */
+.contact-item img {
+    width: 32px; /* Adjust the width as needed */
+    height: 32px; /* Adjust the height as needed */
+}
+
+/* Apply this CSS to center the subtitles */
+.subtitle {
+    text-align: center;
+    /* Optionally, you can set a max-width for the subtitle container to control its width */
+    /* max-width: 600px; */
+    /* margin: 0 auto;  This can be used to center the container itself if needed */
+}
+/* Apply this CSS to make the h2 heading bigger */
+h2 {
+    font-size: 60px; /* Adjust the font size as needed */
+}
+.skills-grid {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 0 auto;  
+}
+
+.skill, .rating {
+    text-align: center;
+    padding: 20px;
+    border: 3px solid black;
+}
+
+.skill {
+    width: 50%;
+}
+
+.rating {
+    width: 50%;
+}
+
+.rating .star {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: gold;
+    clip-path: polygon(
+        50% 0%,
+        61.8% 38.2%,
+        100% 35.4%,
+        68.2% 57.3%,
+        79.1% 91.6%,
+        50% 70%,
+        20.9% 91.6%,
+        31.8% 57.3%,
+        0% 35.4%,
+        38.2% 38.2%
+    );
+}
+/* Apply this CSS to make the "Language" and "Competence" headers bolder */
+/* Make the first row of the grid bold */
+.skills-grid tr:first-child {
+  font-weight: bold;
+}
+
+.skills-grid {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+/* Add margin to the second table */
+.skills-grid + .skills-grid {
+    margin-top: 20px; /* Adjust the gap value as needed */
+}
+
+
+.skills-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adjust the gap value as needed */
+    
+}
+.about-text {
+    text-align: center;
+    font-size: 25px;   
+}
+
+.about-title{
+    text-align: center;
+    font-size: 50px;  
+    margin-top: 100px;
+    
+}
+
+.desc{
+        text-align: center;
+        font-size: 20px;
+
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
