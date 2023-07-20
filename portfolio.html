@@ -24,14 +24,13 @@
     </header>
 
     <main>
-        <div id="home" class="home-container">
+        <div id="home" class="home-container home-section animate-fadeIn">
             <div class="left-content">
                 <img class="home-image" src="images/home1.JPEG" alt="Link 4 Icon">
             </div>
             <div class="center-content">
                 <h1 class="about-title">Danny Stephens</h1>
-                <h1 class="about-title">Full-Stack Developer</h1>
-                <h1 class="about-title">Programming Portfolio</h1>
+                <h1 id="dynamic-text" class="about-title2">Full-Stack Developer</h1>
             </div>
             <div class="right-content">
                 <img class="home-image" src="images/home2.JPEG" alt="Link 4 Icon">
@@ -57,93 +56,8 @@
 
        <div id="skills" class="animate-fadeIn">
             <h2 class="subtitle">Skills</h2>
-            <p class="desc">Within this section, you will be able to see a self-judged scoring system on my programming fluency with different languages and my strengths in the different stages of development.</p>
-           
-            <table class="skills-grid">
-                <tr>
-                    <td class="skill">Language</td>
-                    <td class="skill">Competence</td>
-                </tr>
-                <tr>
-                    <td class="skill">HTML</td>
-                    <td class="rating">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="skill">C#</td>
-                    <td class="rating">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="skill">Java</td>
-                    <td class="rating">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="skill">C++</td>
-                    <td class="rating">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                    </td>
-                </tr>
-                <!-- Add more skills here -->
-            </table>
-            
-           <table class="skills-grid">
-                <tr>
-                    <td class="skill">Area</td>
-                    <td class="skill">Competence</td>
-                </tr>
-                <tr>
-                    <td class="skill">Front-end</td>
-                    <td class="rating">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="skill">Back-end</td>
-                    <td class="rating">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="skill">Full-Stack</td>
-                    <td class="rating">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="skill">Databases</td>
-                    <td class="rating">
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-                        <span class="star"></span>
-
-                    </td>
-                </tr>
-                <!-- Add more skills here -->
-            </table>
         </div>
+
 
 
 
@@ -191,19 +105,11 @@
     </main>
 
     <footer>
-        <!-- Add your footer content here -->
+      
     </footer>
-
-    <!-- ... (previous HTML code) ... -->
-
-    <!-- ... (previous HTML code) ... -->
-
-    <!-- ... (previous HTML code) ... -->
-
-    <!-- ... (previous HTML code) ... -->
-
-   <script>
+    <script>
       document.addEventListener('DOMContentLoaded', function () {
+        const dynamicTextArray = ["App Developement", "Web Developer", "Rugby Fanatic", "Full-Stack Developer"];
         const nav = document.querySelector('nav');
         const navLinks = document.querySelectorAll('nav li a');
         const sections = document.querySelectorAll('main > div');
@@ -231,7 +137,7 @@
             return 0;
           }
 
-          return targetRect.top + scrollY - navHeight + 50; // Subtract an additional offset to adjust for smooth scrolling
+          return targetRect.top + scrollY - navHeight - 100; // Subtract an additional offset to adjust for smooth scrolling
         }
 
         // Function to perform smooth scroll to the target element
@@ -258,52 +164,55 @@
           link.addEventListener('click', smoothScrollToTarget);
         });
 
-        // Add scroll event listener to handle sticky navigation and fade-out effect
-        window.addEventListener('scroll', function () {
-          toggleStickyNav();
-          fadeOutMainTitle();
-        });
-
-        // Function to handle fadeIn effect for elements
-        function fadeInElement(element) {
-          element.style.opacity = 0;
-          let op = 0.1; // initial opacity
-          const timer = setInterval(function () {
-            if (op >= 1) {
-              clearInterval(timer);
-            }
-            element.style.opacity = op;
-            op += op * 0.1; // increase the opacity gradually for smooth fadeIn effect
-          }, 50); // adjust the timing as needed (smaller values give faster fadeIn)
-        }
-
-        // Function to handle intersection observer events for fadeIn effect
-        function handleIntersect(entries, observer) {
+        // Function to handle fadeIn and fadeOut effect for elements
+        function toggleFadeEffect(entries, observer) {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              fadeInElement(entry.target);
-              observer.unobserve(entry.target); // unobserve the target to prevent re-fading when scrolling back
+              entry.target.classList.add('visible'); // Add 'visible' class when the element is in view
+            } else {
+              entry.target.classList.remove('visible'); // Remove 'visible' class when the element goes out of view
             }
           });
         }
+        
+        function animateDynamicText() {
+            const dynamicTextElement = document.getElementById("dynamic-text");
+            let index = 0;
 
-        // Set up the intersection observer for fadeIn effect
-        const fadeInObserver = new IntersectionObserver(handleIntersect, {
+            function updateText() {
+                dynamicTextElement.textContent = dynamicTextArray[index];
+                index = (index + 1) % dynamicTextArray.length;
+            }
+
+            setInterval(updateText, 3000); // Change text every 3 seconds (adjust the interval as desired)
+        }
+
+        // Set up the intersection observer for fadeIn and fadeOut effect
+        const fadeEffectObserver = new IntersectionObserver(toggleFadeEffect, {
           root: null,
           rootMargin: '0px',
           threshold: 0.3, // Adjust the threshold as needed (0.0 to 1.0)
         });
 
-        // Observe each element to trigger the fadeIn effect
+        // Observe each element to trigger the fadeIn and fadeOut effect
         sections.forEach(section => {
-          fadeInObserver.observe(section);
+          fadeEffectObserver.observe(section);
+        });
+
+        // Add scroll event listener to handle sticky navigation
+        window.addEventListener('scroll', function () {
+          toggleStickyNav();
         });
 
         // Trigger the function once on page load to ensure the initial state is correct
         toggleStickyNav();
-        fadeOutMainTitle();
+        animateDynamicText();
+
       });
     </script>
+
+
+<!-- ... (previous HTML code) ... -->
 
 
 

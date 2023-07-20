@@ -1,28 +1,33 @@
 /* Global styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'CustomFont', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    
+    background-color: #161616;
+    color: #a8a8a8; 
+}
 
-    
+@font-face {
+  font-family: 'CustomFont'; /* Name your custom font */
+  src: url('fonts/JosefinSans-Bold.ttf') format('truetype'); /* Replace the font file path with your actual file path and format */
+  /* Add more src declarations for different font formats (e.g., woff, woff2) to support various browsers */
 }
 
 h1 {
-    color: #333;
-    padding: 10px;
+    color: white;
+    padding: 0px;
     margin-bottom: 20px;
+    
 }
 
 header {
     background-color: #f5f5f5;
-    padding: 20px;
     text-align: center;
     font-size: 25px;
 }
 
 nav {
-    background-color: #f5f5f5;
+    background-color: #161616;
     position: relative;
     z-index: 999;
     transition: top 0.1s ease-in-out; /* Smooth transition for sticking */
@@ -34,7 +39,7 @@ nav.fixed-nav {
   left: 0;
   right: 0;
   transition: top 0.3s ease-out;
-  background-color: #f5f5f5; /* Add this line to ensure the background color is applied to the fixed nav */
+  background-color: #161616; 
 }
 
 h1.main-title {
@@ -42,7 +47,6 @@ h1.main-title {
 }
 
 main {
-  padding-top: 60px; /* Adjust the value as needed */
 }
 
 nav ul {
@@ -60,7 +64,7 @@ nav li {
 
 nav li a {
     text-decoration: none;
-    color: #333;
+    color:  #a8a8a8;
     padding: 50px;
 }
 
@@ -69,20 +73,18 @@ nav li a:hover {
 }
 
 main {
-    padding: 20px;
 }
 
 /* Apply margins only to h2 elements inside main */
-main div:not(:first-of-type) h2 {
-    margin-top: 300px; /* Remove this line */
+main div:not(:first-of-type):not(:nth-of-type(2)) h2 {
+    margin-top: 350px; /* Adjust the margin-top value to your desired spacing */
     margin-bottom: 20px;
-    padding-top: 120px; /* Add a padding value that suits your design */
+    padding-top: 0; /* Remove the padding-top to eliminate extra space */
 }
 
 
 footer {
     background-color: #f5f5f5;
-    padding: 20px;
     text-align: center;
 }
 
@@ -212,10 +214,14 @@ h2 {
 
 .about-title{
     text-align: center;
-    font-size: 40px;  
-    margin-top: 100px;
-    
-    
+    font-size: 70px;  
+    margin-top: 100px;  
+}
+
+.about-title2{
+    text-align: center;
+    font-size: 50px;  
+    margin-top: 100px;  
 }
 
 .desc{
@@ -230,7 +236,6 @@ h2 {
 }
 
 .home-container {
-    margin-top: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -264,26 +269,59 @@ h2 {
 
 .animate-fadeIn {
     opacity: 0;
+    transition: opacity 2s ease-in-out;
 }
 
-/* Add transition property to create a smooth fadeIn effect */
-.animate-fadeIn {
-    transition: opacity 0.5s ease-in-out;
+.animate-fadeIn.visible {
+    opacity: 1;
 }
 
 .fade-out {
     opacity: 0;
-    visibility: hidden; /* Optional: This hides the element completely, but keeps its layout space */
-    height: 0; /* Optional: This removes the height of the element to collapse the layout space */
-    padding: 0; /* Optional: This removes any padding that may occupy space even with height: 0 */
-    margin: 0; /* Optional: This removes any margin that may occupy space even with height: 0 */
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, height 0.5s ease-in-out, padding 0.5s ease-in-out, margin 0.5s ease-in-out; /* Optional: Add transitions for a smooth effect */
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
-/* Apply the 'fadeIn' animation when the element becomes visible in the viewport */
-.animate-fadeIn.visible {
-    opacity: 1;
+.home-section {
+    background-image: url('images/background.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 200px; /* Adjust the top padding as needed to position the content properly */
+    padding-bottom: 200px; /* Adjust the bottom padding as needed to position the content properly */
+    margin-bottom: 100px;
 }
+
+.home-section h1, .home-section p{
+    color: white;
+}
+
+
+
+#skills h2, #skills p {
+    color: #a8a8a8;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#dynamic-text {
+    font-size: 40px; /* Adjust the font size as desired */
+    color: white; /* Change the text color as needed */
+    animation: fadeInOut 3s infinite; /* Apply the fadeInOut animation to the text */
+}
+
+
+
 
 
 
