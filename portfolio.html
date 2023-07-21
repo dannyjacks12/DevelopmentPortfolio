@@ -37,34 +37,69 @@
             </div>
         </div>
 
-
-
-
-
-
-
         
         <div id="about" class="animate-fadeIn">
             <h2 class="subtitle">About Me</h2>
-            <p class="about-text">Welcome to my development portfolio. My name is Danny Stephens and I am a full-stack developer who enjoys creating and developing various types of programs, websites, and apps. Although I enjoy being at my computer programming I also like to play rugby, fishing, and going to the gym. </p>
+            <div class="about-content">
+                <div class="about-image-container">
+                    <img class="about-image" src="images/user.png" alt="About Me Image">
+                </div>
+                <div class="about-text-container">
+                    <p class="about-text">Welcome to my development portfolio. My name is Danny Stephens and I am a full-stack developer who enjoys creating and developing various types of programs, websites, and apps. I graduated from Plymouth University with a bachelors degree in computer science which has given me a intermediate understanding on how the tech industry operates. Although I enjoy being at my computer programming, I also like to play rugby, fishing, and going to the gym.</p>
+                </div>
+            </div>
         </div>
 
-        <div id="projects" class="animate-fadeIn">
-            <h2 class="subtitle">Projects</h2>
-            <p>This section will contain information about my projects.</p>
+        <div id="projects" class="projects-section animate-fadeIn">
+            <h2 class="subtitle">My Projects</h2>
+            <div class="projects-container">
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <img src="images/Project1.png" alt="Project 1">
+                        <div class="project-overlay">
+                            <p>Arduino Sensor Recorder</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="images/Project2.png" alt="Project 2">
+                        <div class="project-overlay">
+                            <p>Birchwood Boating App</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="images/project3.png" alt="Project 3">
+                        <div class="project-overlay">
+                            <p>Boat Capacity Predictor</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="images/project4.png" alt="Project 4">
+                        <div class="project-overlay">
+                            <p>SQL Badge Microservice</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="images/project5.png" alt="Project 5">
+                        <div class="project-overlay">
+                            <p>Employee Holiday Request App</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <img src="images/project6.png" alt="Project 6">
+                        <div class="project-overlay">
+                            <p>CS Dungeon Crawler</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-       <div id="skills" class="animate-fadeIn">
+        
+        <div id="skills" class="animate-fadeIn">
             <h2 class="subtitle">Skills</h2>
         </div>
 
 
-
-
-
-
-
-
+        
         <div id="contact" class="animate-fadeIn">
             <h2 class="subtitle">Contact</h2>
             <div class="contact-container">
@@ -137,7 +172,7 @@
             return 0;
           }
 
-          return targetRect.top + scrollY - navHeight - 100; // Subtract an additional offset to adjust for smooth scrolling
+          return targetRect.top + scrollY - navHeight - 150; // Subtract an additional offset to adjust for smooth scrolling
         }
 
         // Function to perform smooth scroll to the target element
