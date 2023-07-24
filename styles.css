@@ -60,6 +60,7 @@ nav ul {
 nav li {
     display: inline-block;
     margin-right: 10px;
+    color:  #a8a8a8;
 }
 
 nav li a {
@@ -69,7 +70,7 @@ nav li a {
 }
 
 nav li a:hover {
-    background-color: #ddd;
+     color: #990000;
 }
 
 main {
@@ -155,7 +156,7 @@ html {
 }
 /* Apply this CSS to make the h2 heading bigger */
 h2 {
-    font-size: 45px; /* Adjust the font size as needed */
+    font-size: 50px; /* Adjust the font size as needed */
     text-decoration: underline;
     color: #990000;
 
@@ -229,6 +230,7 @@ h2 {
     -webkit-clip-path: inset(3% 10% 2% 10% round 5% 20% 0 10%);
     clip-path: inset(3% 10% 2% 10% round 5% 20% 0 10%);
 
+
 }
 
 .about-image {
@@ -245,6 +247,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .left-content {
@@ -283,10 +286,6 @@ h2 {
 .home-section h1, .home-section p{
     color: white;
 }
-
-
-
-
 
 @keyframes fadeInOut {
     0% {
@@ -378,8 +377,9 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 70px;
+    padding-top: 60px;
     background-color: #161616;
+    padding-bottom: 20px;
 }
 
 .triangle-up,
@@ -407,9 +407,42 @@ h2 {
     height: 80px;
     position: absolute;
     top: 250%; /* Center the images vertically */
-    transform: translate(-12%, -40%); /* Center the images precisely */
-    
+    transform: translate(-12%, -20%); /* Center the images precisely */
 }
+
+.skill-text {
+  text-align: center; /* Center the text horizontally */
+}
+
+.skill-text h3 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 15px; /* Adjust the margin between the skill title and text */
+}
+
+.skill-text ul {
+  list-style-type: disc; /* Use bullet points for the list items */
+  margin: 35px auto; /* Center the bullet points horizontally and adjust the margin for vertical spacing */
+  padding: 0;
+  max-width: 400px; /* Set a maximum width to control the width of the bullet-pointed list */
+}
+
+.skill-text li {
+  font-size: 17px;
+  margin: 40px 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
